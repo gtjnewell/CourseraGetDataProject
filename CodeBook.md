@@ -62,28 +62,11 @@ Next the list of subjects was read in and add the subjects as a column to the te
 
 Now perform the same group of commands on the data in the train folder
 
-## there are now two data frame- test and train that have the same number and oder of columns
-## merge these together vertically by row binding the data frames together
-tidydata<-rbind(test,train)
+Two data frames now exist- test and train that have the same number and order of columns
+These were merged together vertically by row binding the data frames together.
 
-## find the column names in features vector that contain '.mean.' or '.std.'
-## these are the columns that are to be extracted from the full dataset
-## add 2 to each element to skip past the Subject and Activity columns
-meanstdCols<-grep("(\\.mean\\.)|(\\.std\\.)",features) + 2
-## set up the list of columns to extract starting with the first two columns: Subject and Activity
-colsToExtract<-c(1,2)
-## append the mean and std columns
-colsToExtract<-append(colsToExtract,meanstdCols)
+A helper vector, meanstdCols was created containing a list of names containing mean or std (regex: "(\\.mean\\.)|(\\.std\\.)" )
 
-## now subset the full data frame using the colsToExtract vector
-t1<-tidydata[,colsToExtract]
+Next set up the list of columns to extract starting with the first two columns: Subject and Activity and append the mean and std columns
 
-## add in the descriptive Activity Name
-t1<-merge(activities,t1,by="Activity")
-
-## write the dataset to a file named "summarize.txt"
-write.table(t1,file="tidydata.txt",row.names=FALSE)
-
-## Step 5
-## Find the mean for all the columns, excluding the first 3 columns
-summarize<-colMeans(t1[,c(-1,-2,-3)])
+Next subset the full data frame using the colsToExtract vector and add in the descriptive Activity Name
