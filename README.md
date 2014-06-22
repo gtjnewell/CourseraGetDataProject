@@ -21,3 +21,5 @@ Files included are:
 
 The variables: meanFreq(), gravityMean, tBodyAccMean, tBodyAccJerkMean, tBodyGyroMean and tBodyGyroJerkMean were not included becuase they do not have corresponding standard deviation values.
 
+CodeBook.md describes the transformation performed on the data.
+
