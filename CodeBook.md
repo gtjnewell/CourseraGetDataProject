@@ -50,56 +50,17 @@ The script expects the data to be found in a folder under the home folder
 The features file was read and a character vector was created from the second column of the data frame. This vector will be used to name the columns of the train and test datasets
 Many of the feature names contain characters that are not valid as column names: ( ) -
 The function make.names was used to correct the names
-The varibaled names were made more descriptive by expanding Acc, Gyro and Mag to Accelerometer, Gyroscope and Magnitude respectively.
+The variable names were made more descriptive by expanding Acc, Gyro and Mag to Accelerometer, Gyroscope and Magnitude respectively.
 
-## read the activities file, naming the columns 'id' and 'ActivityName'
-activities<-read.table("activity_labels.txt", header=FALSE,sep=" ",col.names=c("Activity","ActivityName"))
-## take a peek at the resulting dataset
-head(activities)
-##
-## now read in the test data, naming the columns using the features vector
-test<-read.table("test/X_test.txt",header=FALSE,col.names=features)
-## take a peek at the resulting dataset. Limit it to 2 rows due to large number of columns
-head(test,2)
-## read in the test activities
-activities_test<-read.table("test/y_test.txt",header=FALSE)
-## add the activities as a column to the test data frame
-test<-cbind(activities_test,test)
-## name the newly added column 'Activity'
-names(test)[1]<- "Activity"
+The activities files was naming the columns 'Activity' and 'ActivityName'
 
-## read in the list of subjects
-subject_test<-read.table("test/subject_test.txt",header=FALSE)
-## add the subjects as a column to the test data frame
-test<-cbind(subject_test,test)
-## name the newly added column 'Subject'
-names(test)[1]<- "Subject"
-## free up space in the environment by removing the acitivies_test and subject_test vectors
-rm(activities_test)
-rm(subject_test)
+Next the test data was read in, naming the columns using the features vector
 
-##
-## Now perform the same group of commands on the data in the train folder
-## now read in the train data, naming the columns using the features vector
-train<-read.table("train/X_train.txt",header=FALSE,col.names=features)
-## take a peek at the resulting dataset. Limit it to 2 rows due to large number of columns
-head(train,2)
-## read in the test activities
-activities_train<-read.table("train/y_train.txt",header=FALSE)
-## add the activities as a column to the train data frame
-train<-cbind(activities_train,train)
-## name the newly added column 'Activity'
-names(train)[1]<- "Activity"
+Next the test activities file was read adn the activities was added as a column to the test data frame. The added column was named 'Activity'
 
-## read in the list of subjects
-subject_train<-read.table("train/subject_train.txt",header=FALSE)
-## add the subjects as a column to the train data frame
-train<-cbind(subject_train,train)
-## name the newly added column 'Subject'
-names(train)[1]<- "Subject"
-## free up space in the environment by removing the acitivies_train and subject_train vectors
-rm(activities_train)
-rm(subject_train)
+Next the list of subjects was read in and add the subjects as a column to the test data frame, naming the newly added column 'Subject'.
+
+Now perform the same group of commands on the data in the train folder
 
 ## there are now two data frame- test and train that have the same number and oder of columns
 ## merge these together vertically by row binding the data frames together
