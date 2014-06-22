@@ -19,4 +19,5 @@ Files included are:
 * A script to compute and output statiistics on the tidy data set
 * A codebook that describes the variables in the data set
 
+The variables: meanFreq(), gravityMean, tBodyAccMean, tBodyAccJerkMean, tBodyGyroMean and tBodyGyroJerkMean were not included becuase they do not have corresponding standard deviation values.
 
