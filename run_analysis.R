@@ -97,3 +97,6 @@ t1<-merge(activities,t1,by="Activity")
 ## write the tidy dataset to a file named "tidydata.txt"
 write.table(t1,file="tidydata.txt",row.names=FALSE)
 
+## Step 5
+## Find the mean for all the columns, excluding the first 3 columns
+summarize<-colMeans(t1[,c(-1,-2,-3)])
