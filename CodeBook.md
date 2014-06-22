@@ -38,3 +38,7 @@ The set of variables that were estimated from these signals are:
 mean.: Mean value
 std.: Standard deviation
 
+Subject is the id of the Subject performing the activity, 1-30<br/>
+Activity is the activity performed 1-6<br/>
+ActivityName is the descriptive name of the activity that was performed<br/>
+
